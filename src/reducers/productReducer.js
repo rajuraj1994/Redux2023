@@ -1,4 +1,4 @@
-import { FETCH_PRODUCT_REQUEST,FETCH_PRODUCT_SUCCESS,FETCH_PRODUCT_FAILURE, FETCH_SINGLE_PRODUCT_REQUEST, FETCH_SINGLE_PRODUCT_SUCCESS, FETCH_SINGLE_PRODUCT_FAILURE } from "../constants/productConstant";
+import { FETCH_PRODUCT_REQUEST,FETCH_PRODUCT_SUCCESS,FETCH_PRODUCT_FAILURE, FETCH_SINGLE_PRODUCT_REQUEST, FETCH_SINGLE_PRODUCT_FAILURE, FETCH_SINGLE_PRODUCT_SUCCESS } from "../constants/productConstant";
 
 const initialState={
     products:[],
@@ -29,7 +29,7 @@ const productReducer=(state=initialState,action)=>{
 
 export default productReducer
 
-export const singleProductReducer=(state={product:{}},action)=>{
+export const singleProductReducer=(state={product:{},error:null},action)=>{
     switch(action.type){
         case FETCH_SINGLE_PRODUCT_REQUEST:
             return{
@@ -39,14 +39,14 @@ export const singleProductReducer=(state={product:{}},action)=>{
             return{
                 ...state,
                 product:action.payload
-
             }
         case FETCH_SINGLE_PRODUCT_FAILURE:
             return{
                 ...state,
                 error:action.payload
+
             }
         default:
-            return state
+            return state 
     }
 }
